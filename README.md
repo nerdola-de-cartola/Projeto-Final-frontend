@@ -48,6 +48,8 @@ Demais orientações, estão contidas no seguinte documento
 
 - [Projeto Sistema Pedidos.pdf](https://github.com/POO-2024-1/Projeto-Final/blob/4b6ef4d3d36a2d80a99d66e30f2ed16e535e078b/Projeto%20Sistema%20Pedidos.pdf)
 
+Informação importante
+
 - Os produtos não estão alocados de forma dinâmica no código, mas sim via API. Caso deseje mudar o domínio dos produtos/pedidos, será necessário consultar uma nova API de produtos ou alocá-los de forma estática no código
 
 
