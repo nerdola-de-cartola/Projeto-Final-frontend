@@ -1,6 +1,6 @@
 # Sistema de Controle de Pedidos - SCP
 
-Desenvolvido com React.js Framework.
+Desenvolvido com React.js Framework
 
 ## Características
 
@@ -47,8 +47,7 @@ npm start
 Demais orientações, estão contidas no seguinte documento
 
 ```bash
-Projeto Sistema Pedidos.pdf
-https://github.com/POO-2024-1/Projeto-Final/blob/85f9ba30c6b9c61c10ba9ce7031cb08ea8479d08/Projeto%20Sistema%20Pedidos.pdf
+[Projeto Sistema Pedidos.pdf](https://github.com/POO-2024-1/Projeto-Final/blob/85f9ba30c6b9c61c10ba9ce7031cb08ea8479d08/Projeto%20Sistema%20Pedidos.pdf)
 ```
 
 
