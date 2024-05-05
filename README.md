@@ -46,10 +46,7 @@ npm start
 ```
 Demais orientações, estão contidas no seguinte documento
 
-```bash
-- [Projeto Sistema Pedidos.pdf](https://acesse.dev/Projeto-Final)
-```
-- [Projeto Sistema Pedidos.pdf](https://acesse.dev/Projeto-Final)
+- [Projeto Sistema Pedidos.pdf](https://github.com/POO-2024-1/Projeto-Final/blob/4b6ef4d3d36a2d80a99d66e30f2ed16e535e078b/Projeto%20Sistema%20Pedidos.pdf)
 
 
 
