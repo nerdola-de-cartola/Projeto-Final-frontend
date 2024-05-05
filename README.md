@@ -9,39 +9,37 @@ Desenvolvido com React.js Framework.
 
 ## Capturas de Tela
 
-![alt text](image.png)
+![image](https://github.com/POO-2024-1/Projeto-Final/assets/69059499/770ae35a-5fcc-4797-8b80-47ce8936fc5d)
 
-![alt text](image-1.png)
+![image](https://github.com/POO-2024-1/Projeto-Final/assets/69059499/c0ffc3d2-b5b9-4d2e-94ab-f7bb68ee864e)
 
-![image](https://github.com/POO-2024-1/Projeto-Final/assets/69059499/adcccce1-4980-49eb-88f1-281e1f3f4839)
+![image](https://github.com/POO-2024-1/Projeto-Final/assets/69059499/db5c183d-cac9-42f4-a661-58c90940d364)
 
-![alt text](image-2.png)
+![image](https://github.com/POO-2024-1/Projeto-Final/assets/69059499/9e3cc799-6fa6-4223-85a7-810646f17c44)
 
-![image](https://github.com/POO-2024-1/Projeto-Final/assets/69059499/1b1b7576-696b-4284-9a7e-b6cdbfb186a6)
-
-![alt text](image-3.png)
+![image](https://github.com/POO-2024-1/Projeto-Final/assets/69059499/6ab251ab-0a4c-4695-9f5d-2baaaa343fb1)
 
 # Execute Localmente
 
-## Clonar o Projeto
+Clonar o Projeto
 
 ```bash
 git clone https://github.com/POO-2024-1/Projeto-Final.git
 ```
 
-## Navegar até o Diretório do Projeto
+Navegar até o Diretório do Projeto
 
 ```bash
 cd SCP
 ```
 
-## Instalar Dependências
+Instalar Dependências
 
 ```bash
 npm install
 ```
 
-## Iniciar o Servidor
+Iniciar o Servidor
 
 ```bash
 npm start
