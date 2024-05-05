@@ -44,6 +44,10 @@ Iniciar o Servidor
 ```bash
 npm start
 ```
+Demais orientações, estão contidas no seguinte documento
 
+```bash
+Projeto Sistema Pedidos.pdf
+```
 
 
