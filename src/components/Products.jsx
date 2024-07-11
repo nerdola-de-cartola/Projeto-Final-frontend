@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 
 const Products = () => {
   const [data, setData] = useState([]);
-  const [filter, setFilter] = useState(data);
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
@@ -22,8 +21,7 @@ const Products = () => {
     const getProducts = async () => {
       setLoading(true);
       const response = await fetch("http://localhost:8080/produto");
-      setData(await response.clone().json());
-      setFilter(await response.json());
+      setData(await response.json());
       setLoading(false);
     };
 
@@ -58,29 +56,16 @@ const Products = () => {
     );
   };
 
-  const filterProduct = (cat) => {
-    const updatedList = data.filter((item) => item.category === cat);
-    setFilter(updatedList);
-  }
-
   const ShowProducts = () => {
     return (
       <>
-        <div className="buttons text-center py-5">
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => setFilter(data)}>Todos</button>
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("Roupas Masculinas")}>Roupas Masculinas</button>
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("Roupas Femininas")}>Roupas Femininas</button>
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("Joias")}>Joias</button>
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterProduct("Eletrônicos")}>Eletrônicos</button>
-        </div>
-
-        {filter.map((product) => {
+        {data.map((product) => {
           return (
             <div id={product.idProduto} key={product.idProduto} className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4">
               <div className="card text-center h-100" key={product.idProduto}>
                 <img
                   className="card-img-top p-3"
-                  src={product.imagem}
+                  // src={product.imagem}
                   alt="Card"
                   height={300}
                 />
