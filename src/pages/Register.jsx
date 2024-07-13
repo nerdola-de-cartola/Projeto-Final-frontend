@@ -9,13 +9,9 @@ const Register = () => {
         email: '',
         senha: '',
         dataNascimento: '',
-        documento: '',
         tipoDocumento: '', // 'CPF' ou 'CNPJ'
         telefone: '',
         endereco: '',
-        rg: '',
-        razaoSocial: '',
-        inscricaoEstadual: ''
     });
 
     const handleChange = (e) => {
@@ -51,13 +47,27 @@ const Register = () => {
         return re.test(email.toLowerCase());
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validateEmail(form.email)) {
             alert('Por favor, insira um endereço de e-mail válido.');
             return;
         }
         console.log('Formulário enviado:', form);
+
+        const baseUrl = "http://localhost:8080/cliente/";
+        const url = form.tipoDocumento === "CPF" ? baseUrl + "pessoaFisica" : baseUrl + "pessoaJuridica";
+
+        const resp = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify(form),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+
+        const respJson = await resp.json();
+        console.log(respJson);
     }
 
     return (
@@ -138,15 +148,15 @@ const Register = () => {
                             {form.tipoDocumento === 'CPF' && (
                                 <>
                                     <div className="form-group my-3">
-                                        <label htmlFor="Documento">CPF</label>
+                                        <label htmlFor="cpf">CPF</label>
                                         <InputMask
                                             mask="999.999.999-99"
                                             className="form-control"
-                                            id="Documento"
-                                            name="documento"
+                                            id="cpf"
+                                            name="cpf"
                                             placeholder="Digite seu CPF"
                                             onChange={handleChange}
-                                            value={form.documento}
+                                            value={form.cpf}
                                         />
                                     </div>
                                     <div className="form-group my-3">
@@ -166,15 +176,15 @@ const Register = () => {
                             {form.tipoDocumento === 'CNPJ' && (
                                 <>
                                     <div className="form-group my-3">
-                                        <label htmlFor="Documento">CNPJ</label>
+                                        <label htmlFor="cnpj">CNPJ</label>
                                         <InputMask
                                             mask="99.999.999/9999-99"
                                             className="form-control"
-                                            id="Documento"
-                                            name="documento"
+                                            id="cnpj"
+                                            name="cnpj"
                                             placeholder="Digite seu CNPJ"
                                             onChange={handleChange}
-                                            value={form.documento}
+                                            value={form.cnpj}
                                         />
                                     </div>
                                     <div className="form-group my-3">
