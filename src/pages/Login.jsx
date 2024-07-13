@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Footer, Navbar } from "../components";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/action";
+import formatDate from "../utils/formatDate";
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -10,7 +13,8 @@ const Login = () => {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
-  
+  const dispatch = useDispatch();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     
@@ -41,8 +45,17 @@ const Login = () => {
         return;
       }
       
-      const respJson = await resp.json();
-      console.log(respJson);
+      const respBody = await resp.json();
+      console.log(respBody)
+      const dataDeNascimento = respBody.dataDeNascimento ? formatDate(respBody.dataDeNascimento) : undefined;
+      const tipoDocumento = respBody.cpf ? "CPF" : "CNPJ";
+
+      // console.log(dataDeNascimento)
+
+      const user = {...respBody, tipoDocumento, dataDeNascimento}
+
+      console.log(user);
+      dispatch(login(user));
       navigate(`/`);
     } catch (error) {
       setError(error);

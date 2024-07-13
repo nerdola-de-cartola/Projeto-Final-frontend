@@ -13,3 +13,18 @@ export const delCart = (product) =>{
         payload:product
     }
 }
+
+// For login
+export const login = (user) =>{
+    return {
+        type:"LOGIN",
+        payload:user
+    }
+}
+
+// For logout
+export const logout = () =>{
+    return {
+        type:"LOGOUT"
+    }
+}
