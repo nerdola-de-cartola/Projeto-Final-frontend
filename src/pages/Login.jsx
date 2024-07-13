@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Footer, Navbar } from "../components";
 
 const Login = () => {
@@ -9,9 +9,13 @@ const Login = () => {
   });
   const [error, setError] = useState("");
 
+  const navigate = useNavigate();
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
-
+    
+    setError("");
+    
     setForm(prevState => ({
       ...prevState,
       [name]: value
@@ -31,14 +35,15 @@ const Login = () => {
 
     try {
       const resp = await fetch(url, body)
-
+      
       if(resp.status === 403) {
         setError("Email ou senha inválidos");
         return;
       }
-
+      
       const respJson = await resp.json();
       console.log(respJson);
+      navigate(`/`);
     } catch (error) {
       setError(error);
     }
