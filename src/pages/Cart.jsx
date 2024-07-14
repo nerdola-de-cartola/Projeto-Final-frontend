@@ -5,10 +5,8 @@ import { addCart, delCart } from "../redux/action";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const state = useSelector((state) => state.handleCart);
+  const items = useSelector((state) => state.handleCart);
   const dispatch = useDispatch();
-
-  console.log(state);
 
   const EmptyCart = () => {
     return (
@@ -43,19 +41,14 @@ const Cart = () => {
 
 
   const ShowCart = () => {
-    let subtotal = 0;
     let shipping = 30.0;
     let totalItems = 0;
+    let subTotal = 0.0;
 
-    state.map((item) => {
-      subtotal += item.preco * item.qty;
-      return subtotal;
-    });
-
-    state.map((item) => {
+    for (const item of items) {
       totalItems += item.qty;
-      return totalItems;
-    });
+      subTotal += item.qty * item.preco
+    }
 
     return (
       <>
@@ -68,8 +61,8 @@ const Cart = () => {
                     <h5 className="mb-0">Lista dos Produtos</h5>
                   </div>
                   <div className="card-body">
-                    {state.map((item) => (
-                      <div key={item.id}>
+                    {items.map((item) => (
+                      <div key={item.idProduto}>
                         <div className="row d-flex align-items-center">
                           <div className="col-lg-3 col-md-12">
                             <div
@@ -130,7 +123,7 @@ const Cart = () => {
                   <div className="card-body">
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                        Produtos ({totalItems})<span>${Math.round(subtotal)}</span>
+                        Produtos ({totalItems})<span>${Math.round(subTotal)}</span>
                       </li>
                       <li className="list-group-item d-flex justify-content-between align-items-center px-0">
                         Preço do Envio<span>${shipping}</span>
@@ -150,11 +143,11 @@ const Cart = () => {
                           <strong>Valor Total</strong>
                         </div>
                         <span>
-                          <strong>${Math.round(subtotal + shipping)}</strong>
+                          <strong>${Math.round(subTotal + shipping)}</strong>
                         </span>
                       </li>
                     </ul>
-                    <Link to="/checkout" className="btn btn-dark btn-lg btn-block">
+                    <Link to="/checkout" className="btn btn-dark btn-lg btn-block text-wrap">
                       Vá para a finalização da compra
                     </Link>
                   </div>
@@ -174,7 +167,7 @@ const Cart = () => {
       <div className="container my-3 py-3">
         <h1 className="text-center">Carrinho</h1>
         <hr />
-        {state.length > 0 ? <ShowCart /> : <EmptyCart />}
+        {items.length > 0 ? <ShowCart /> : <EmptyCart />}
       </div>
       <Footer />
     </>

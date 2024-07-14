@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Footer, Navbar } from "../components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/action";
 import formatDate from "../utils/formatDate";
 
@@ -12,14 +12,17 @@ const Login = () => {
   });
   const [error, setError] = useState("");
 
+  const items = useSelector((state) => state.handleCart);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const redirectUrl = items.length ? "/checkout" : "/";
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
+
     setError("");
-    
+
     setForm(prevState => ({
       ...prevState,
       [name]: value
@@ -39,12 +42,12 @@ const Login = () => {
 
     try {
       const resp = await fetch(url, body)
-      
-      if(resp.status === 403) {
+
+      if (resp.status === 403) {
         setError("Email ou senha inválidos");
         return;
       }
-      
+
       const respBody = await resp.json();
       console.log(respBody)
       const dataDeNascimento = respBody.dataDeNascimento ? formatDate(respBody.dataDeNascimento) : undefined;
@@ -52,11 +55,11 @@ const Login = () => {
 
       // console.log(dataDeNascimento)
 
-      const user = {...respBody, tipoDocumento, dataDeNascimento}
+      const user = { ...respBody, tipoDocumento, dataDeNascimento }
 
       console.log(user);
       dispatch(login(user));
-      navigate(`/`);
+      navigate(redirectUrl);
     } catch (error) {
       setError(error);
     }

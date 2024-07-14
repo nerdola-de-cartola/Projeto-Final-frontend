@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Footer, Navbar } from "../components";
 import UserForm from "../components/UserForm";
 import { useSelector } from 'react-redux'
 import { useDispatch } from "react-redux";
 import validateEmail from "../utils/validateEmail";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { logout } from "../redux/action";
 
 const User = () => {
