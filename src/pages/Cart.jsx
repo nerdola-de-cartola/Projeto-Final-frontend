@@ -8,6 +8,8 @@ const Cart = () => {
   const state = useSelector((state) => state.handleCart);
   const dispatch = useDispatch();
 
+  console.log(state);
+
   const EmptyCart = () => {
     return (
       <div className="container">
@@ -46,7 +48,7 @@ const Cart = () => {
     let totalItems = 0;
 
     state.map((item) => {
-      subtotal += item.price * item.qty;
+      subtotal += item.preco * item.qty;
       return subtotal;
     });
 
@@ -75,8 +77,8 @@ const Cart = () => {
                               data-mdb-ripple-color="light"
                             >
                               <img
-                                src={item.image}
-                                alt={item.title}
+                                src={item.imagem}
+                                alt={item.nome}
                                 width={100}
                                 height={75}
                               />
@@ -84,7 +86,10 @@ const Cart = () => {
                           </div>
                           <div className="col-lg-5 col-md-6">
                             <p>
-                              <strong>{item.title}</strong>
+                              <strong>{item.nome}</strong>
+                            </p>
+                            <p>
+                              {item.descricao}
                             </p>
                           </div>
                           <div className="col-lg-4 col-md-6">
@@ -95,7 +100,7 @@ const Cart = () => {
                               >
                                 <i className="fas fa-minus"></i>
                               </button>
-                              <p className="mx-5">{item.qty}</p>
+                              <span className="d-flex align-items-center mx-5 align-middle">{item.qty}</span>
                               <button
                                 className="btn px-3"
                                 onClick={() => addItem(item)}
@@ -105,7 +110,7 @@ const Cart = () => {
                             </div>
                             <p className="text-start text-md-center">
                               <strong>
-                                <span className="text-muted">{item.qty}</span> x ${item.price}
+                                <span className="text-muted">{item.qty}</span> x ${item.preco}
                               </strong>
                             </p>
                           </div>
