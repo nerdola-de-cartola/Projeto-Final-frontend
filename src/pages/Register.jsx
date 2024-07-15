@@ -57,7 +57,7 @@ const Register = () => {
                                 <p>Já possui uma conta? <Link to="/login" className="text-decoration-underline text-info">Entrar</Link></p>
                             </div>
                             <div className="text-center">
-                                <button className="btn btn-primary" type="submit">
+                                <button className="btn btn-dark" type="submit">
                                     Cadastrar
                                 </button>
                             </div>
