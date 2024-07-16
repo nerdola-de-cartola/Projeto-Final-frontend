@@ -4,5 +4,6 @@ WORKDIR .
 COPY public/ ./public
 COPY src ./src
 COPY package.json .
-run npm i
+RUN npm i
+EXPOSE 3000
 ENTRYPOINT [ "npm", "start" ]

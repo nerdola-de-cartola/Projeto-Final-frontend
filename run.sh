@@ -1,1 +1,1 @@
-docker run fp_frontend --detach --rm --net=host
+docker run -d --rm -p 3000:3000 fp_frontend
