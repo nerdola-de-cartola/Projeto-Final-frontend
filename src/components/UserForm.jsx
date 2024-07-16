@@ -51,6 +51,31 @@ const UserForm = ({ form, setForm }) => {
                 />
             </div>
             <div className="form-group my-3">
+                <label htmlFor="Phone">Telefone</label>
+                <InputMask
+                    type="phone"
+                    className="form-control"
+                    id="Phone"
+                    name="telefone"
+                    mask="(99) 99999-9999"
+                    placeholder="(62) 98888-8888"
+                    onChange={handleChange}
+                    value={form.telefone}
+                />
+            </div>
+            <div className="form-group my-3">
+                <label htmlFor="Address">Endereço</label>
+                <input
+                    type="address"
+                    className="form-control"
+                    id="Address"
+                    name="endereco"
+                    placeholder="Av B. Rua 4"
+                    onChange={handleChange}
+                    value={form.endereco}
+                />
+            </div>
+            <div className="form-group my-3">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                     <label>
                         <input
@@ -92,7 +117,7 @@ const UserForm = ({ form, setForm }) => {
                             type="date"
                             className="form-control"
                             id="DataNascimento"
-                            name="dataNascimento"
+                            name="dataDeNascimento"
                             onChange={handleChange}
                             value={form.dataDeNascimento}
                         />

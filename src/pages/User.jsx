@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from "react-redux";
 import validateEmail from "../utils/validateEmail";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../redux/action";
+import { login, logout } from "../redux/action";
+import formatDate from "../utils/formatDate";
 
 const User = () => {
   const dispatch = useDispatch();
@@ -13,9 +14,6 @@ const User = () => {
 
   const user = useSelector((state) => state.handleUser);
   const [form, setForm] = useState(user);
-
-  console.log(user);
-  console.log(form);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -35,17 +33,27 @@ const User = () => {
     const baseUrl = "http://localhost:8080/cliente/";
     const url = form.tipoDocumento === "CPF" ? baseUrl + "pessoaFisica" : baseUrl + "pessoaJuridica";
     const body = {
+      ...form,
+      userName: form.nome
+  }
+  const req = {
       method: "PUT",
-      body: JSON.stringify(form),
+      body: JSON.stringify(body),
       headers: {
-        "Content-type": "application/json; charset=UTF-8"
+          "Content-type": "application/json; charset=UTF-8"
       }
-    };
+  };
+
 
     try {
-      const resp = await fetch(url, body);
-      const respJson = await resp.json();
-      console.log(respJson);
+      const resp = await fetch(url, req);
+      const respBody = await resp.json();
+      const dataDeNascimento = respBody.dataDeNascimento ? formatDate(respBody.dataDeNascimento) : undefined;
+      const tipoDocumento = respBody.cpf ? "CPF" : "CNPJ";
+
+      const user = { ...respBody, tipoDocumento, dataDeNascimento }
+
+      dispatch(login(user));
     } catch (error) {
       console.log(error)
     }

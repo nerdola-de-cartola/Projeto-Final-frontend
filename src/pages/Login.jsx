@@ -43,25 +43,20 @@ const Login = () => {
     try {
       const resp = await fetch(url, body)
 
-      if (resp.status === 403) {
-        setError("Email ou senha inválidos");
-        return;
+      if(resp.status !== 202) {
+        throw await resp.text();
       }
 
       const respBody = await resp.json();
-      console.log(respBody)
       const dataDeNascimento = respBody.dataDeNascimento ? formatDate(respBody.dataDeNascimento) : undefined;
       const tipoDocumento = respBody.cpf ? "CPF" : "CNPJ";
 
-      // console.log(dataDeNascimento)
-
       const user = { ...respBody, tipoDocumento, dataDeNascimento }
 
-      console.log(user);
       dispatch(login(user));
       navigate(redirectUrl);
     } catch (error) {
-      setError(error);
+      setError(error.toString());
     }
   }
 

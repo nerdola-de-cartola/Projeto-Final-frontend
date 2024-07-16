@@ -19,7 +19,7 @@ const Navbar = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                <div className="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+                <div className="collapse navbar-collapse flex-grow-0 gap-3" id="navbarSupportedContent">
                     <ul className="navbar-nav my-2 text-center gap-3">
                         <li className={navItem}>
                             <NavLink className="nav-link" to="/">Página inicial </NavLink>
@@ -40,13 +40,12 @@ const Navbar = () => {
                             :
                             <NavLink to="/login" className="btn btn-outline-dark"><i className="fa fa-sign-in-alt mr-1"></i> Login</NavLink>
                         }
-                        <NavLink to="/register" className="btn btn-outline-dark"><i className="fa fa-user-plus mr-1"></i> Cadastro</NavLink>
+                        {/* <NavLink to="/register" className="btn btn-outline-dark"><i className="fa fa-user-plus mr-1"></i> Cadastro</NavLink> */}
                         <NavLink to="/cart" className="btn btn-outline-dark"><i className="fa fa-cart-shopping mr-1"></i> Carrinho ({state.length})</NavLink>
                         {user.idCliente !== undefined &&
                             <NavLink to="/OrdersPage" className="btn btn-outline-dark"><i className="fa fa-sign-in-alt mr-1"></i> Histórico</NavLink>
                         }
                     </div>
-
                 </div>
 
 
