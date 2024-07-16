@@ -1,0 +1,1 @@
+docker run fp_frontend --detach --rm --net=host
