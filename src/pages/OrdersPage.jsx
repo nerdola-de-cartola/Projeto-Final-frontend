@@ -3,6 +3,7 @@ import { Navbar, Footer } from '../components';
 import { useSelector } from 'react-redux'
 import { useNavigate, Link } from "react-router-dom";
 import formatDate from '../utils/formatDate';
+import formatImage from '../utils/formatImage';
 
 const OrdersPage = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const OrdersPage = () => {
               data-mdb-ripple-color="light"
             >
               <img
-                src={product.imagem}
+                src={formatImage(product.imagem)}
                 alt={product.nome}
                 width={100}
                 height={75}

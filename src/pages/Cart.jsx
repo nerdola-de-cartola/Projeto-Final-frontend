@@ -3,6 +3,7 @@ import { Footer, Navbar } from "../components";
 import { useSelector, useDispatch } from "react-redux";
 import { addCart, delCart } from "../redux/action";
 import { Link } from "react-router-dom";
+import formatImage from "../utils/formatImage";
 
 const Cart = () => {
   const items = useSelector((state) => state.handleCart);
@@ -70,7 +71,7 @@ const Cart = () => {
                               data-mdb-ripple-color="light"
                             >
                               <img
-                                src={item.imagem}
+                                src={formatImage(item.imagem)}
                                 alt={item.nome}
                                 width={100}
                                 height={75}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
-
+import formatImage from "../utils/formatImage";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -66,7 +66,7 @@ const Products = () => {
               <div className="card text-center h-100" key={product.idProduto}>
                 <img
                   className="card-img-top p-3"
-                  // src={product.imagem}
+                  src={formatImage(product.imagem)}
                   alt="Card"
                   height={300}
                 />
@@ -79,7 +79,7 @@ const Products = () => {
                   </p>
                 </div>
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item lead">$ {product.price}</li>
+                  <li className="list-group-item lead">$ {product.preco}</li>
                 </ul>
                 <div className="card-body">
                   <Link to={"/product/" + product.idProduto} className="btn btn-dark m-1">
