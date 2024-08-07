@@ -124,10 +124,10 @@ const Cart = () => {
                   <div className="card-body">
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                        Produtos ({totalItems})<span>${Math.round(subTotal)}</span>
+                        Produtos ({totalItems})<span>${subTotal.toFixed(2)}</span>
                       </li>
                       <li className="list-group-item d-flex justify-content-between align-items-center px-0">
-                        Preço do Envio<span>${shipping}</span>
+                        Preço do Envio<span>${shipping.toFixed(2)}</span>
                       </li>
                       {/* Adicionando a linha para a Data da Compra */}
                       <li className="list-group-item d-flex justify-content-between align-items-center px-0">
@@ -144,7 +144,7 @@ const Cart = () => {
                           <strong>Valor Total</strong>
                         </div>
                         <span>
-                          <strong>${Math.round(subTotal + shipping)}</strong>
+                          <strong>${(subTotal + shipping).toFixed(2)}</strong>
                         </span>
                       </li>
                     </ul>

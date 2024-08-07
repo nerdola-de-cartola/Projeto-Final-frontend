@@ -14,6 +14,7 @@ const User = () => {
 
   const user = useSelector((state) => state.handleUser);
   const [form, setForm] = useState(user);
+  const [msg, setMsg] = useState("");
 
   const handleLogout = () => {
     dispatch(logout());
@@ -35,14 +36,14 @@ const User = () => {
     const body = {
       ...form,
       userName: form.nome
-  }
-  const req = {
+    }
+    const req = {
       method: "PUT",
       body: JSON.stringify(body),
       headers: {
-          "Content-type": "application/json; charset=UTF-8"
+        "Content-type": "application/json; charset=UTF-8"
       }
-  };
+    };
 
 
     try {
@@ -52,16 +53,16 @@ const User = () => {
       const tipoDocumento = respBody.cpf ? "CPF" : "CNPJ";
 
       const user = { ...respBody, tipoDocumento, dataDeNascimento }
-
+      setMsg("Cadastro atualizado com sucesso!");
       dispatch(login(user));
     } catch (error) {
       console.log(error)
     }
   }
 
-  
+
   useEffect(() => {
-    if(user.idCliente === undefined) {
+    if (user.idCliente === undefined) {
       navigate(`*`);
     }
   }, [navigate, user])
@@ -72,6 +73,9 @@ const User = () => {
       <div className="container my-3 py-3">
         <h1 className="text-center">Usuário</h1>
         <hr />
+        { msg &&
+          <h4 className="text-center text-success">{msg}</h4>
+        }
         <div className="row my-4 h-100">
           <div className="col-md-6 col-lg-6 col-sm-10 mx-auto">
             <form onSubmit={handleSubmit}>
